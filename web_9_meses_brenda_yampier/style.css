@@ -1,0 +1,675 @@
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  --rosa-1: #fff7fb;
+  --rosa-2: #ffe2ef;
+  --rosa-3: #ffb6d2;
+  --rosa-4: #f36fa4;
+  --texto: #3b2530;
+  --suave: #7e5f6c;
+  --blanco: rgba(255, 255, 255, 0.78);
+  --borde: rgba(255, 255, 255, 0.65);
+  --sombra: 0 18px 55px rgba(178, 82, 122, 0.18);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: var(--texto);
+  background:
+    radial-gradient(circle at top left, #ffffff 0 20%, transparent 34%),
+    radial-gradient(circle at 80% 10%, #ffe2ef 0 18%, transparent 32%),
+    linear-gradient(145deg, #fff7fb 0%, #fff 43%, #ffe9f2 100%);
+  overflow-x: hidden;
+}
+
+button {
+  font-family: inherit;
+}
+
+.oculto {
+  display: none !important;
+}
+
+.decoracion span {
+  position: fixed;
+  width: 140px;
+  height: 140px;
+  border-radius: 999px;
+  background: rgba(255, 182, 210, 0.28);
+  filter: blur(3px);
+  animation: flotar 12s ease-in-out infinite;
+  z-index: -1;
+}
+
+.decoracion span:nth-child(1) { left: -40px; top: 90px; }
+.decoracion span:nth-child(2) { right: -50px; top: 160px; animation-delay: 2s; }
+.decoracion span:nth-child(3) { left: 20%; bottom: 80px; animation-delay: 4s; }
+.decoracion span:nth-child(4) { right: 18%; bottom: 120px; animation-delay: 1s; }
+.decoracion span:nth-child(5) { left: 48%; top: 35%; animation-delay: 6s; }
+
+@keyframes flotar {
+  0%, 100% { transform: translateY(0) scale(1); opacity: .55; }
+  50% { transform: translateY(-28px) scale(1.08); opacity: .85; }
+}
+
+.pantalla-inicio {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 28px;
+}
+
+.inicio-card,
+.bloque,
+.hero,
+.modal-card {
+  border: 1px solid var(--borde);
+  background: var(--blanco);
+  backdrop-filter: blur(22px);
+  box-shadow: var(--sombra);
+}
+
+.inicio-card {
+  width: min(520px, 100%);
+  border-radius: 34px;
+  padding: 34px 26px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.inicio-card::before,
+.hero::before {
+  content: "♡";
+  position: absolute;
+  right: 22px;
+  top: 10px;
+  font-size: 90px;
+  color: rgba(243, 111, 164, 0.12);
+  transform: rotate(12deg);
+}
+
+.mini-etiqueta {
+  display: inline-block;
+  margin: 0 0 12px;
+  padding: 7px 13px;
+  border-radius: 999px;
+  background: rgba(255, 182, 210, 0.35);
+  color: #a5426c;
+  font-weight: 800;
+  font-size: 0.78rem;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+}
+
+h1, h2, h3, p {
+  margin-top: 0;
+}
+
+.inicio-card h1 {
+  font-size: clamp(2rem, 8vw, 3.35rem);
+  line-height: 1.02;
+  margin-bottom: 16px;
+}
+
+.inicio-texto,
+.bloque p,
+.tarjeta-romantica p,
+.sobre p,
+.final-box p {
+  line-height: 1.8;
+  color: var(--suave);
+}
+
+.btn-principal,
+.btn-secundario {
+  border: 0;
+  cursor: pointer;
+  border-radius: 999px;
+  font-weight: 900;
+  transition: transform .2s ease, box-shadow .2s ease, opacity .2s ease;
+}
+
+.btn-principal {
+  padding: 15px 22px;
+  color: white;
+  background: linear-gradient(135deg, #f36fa4, #ff9ec4);
+  box-shadow: 0 12px 26px rgba(243, 111, 164, .32);
+}
+
+.btn-secundario {
+  padding: 12px 16px;
+  color: #a5426c;
+  background: #fff;
+  border: 1px solid rgba(243, 111, 164, .22);
+}
+
+.btn-principal:active,
+.btn-secundario:active,
+.nav-btn:active {
+  transform: scale(.97);
+}
+
+.nota-musica {
+  margin: 16px 0 0;
+  font-size: .88rem;
+  color: #9a7081;
+}
+
+.app {
+  width: min(1100px, 100%);
+  margin: 0 auto;
+  padding: 18px 14px 92px;
+}
+
+.hero {
+  position: relative;
+  border-radius: 34px;
+  min-height: 420px;
+  display: grid;
+  place-items: center;
+  padding: 36px 22px;
+  overflow: hidden;
+  background:
+    linear-gradient(135deg, rgba(255, 247, 251, .92), rgba(255, 226, 239, .72)),
+    url("assets/fotos/foto01.jpg") center/cover;
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(255,255,255,.62), rgba(255,247,251,.92));
+}
+
+.hero-contenido {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  max-width: 760px;
+}
+
+.hero h1 {
+  font-size: clamp(2.6rem, 12vw, 6.3rem);
+  line-height: .9;
+  margin-bottom: 16px;
+  letter-spacing: -0.08em;
+}
+
+.subtitulo {
+  font-size: 1.08rem;
+  color: #74495c;
+  margin-bottom: 22px;
+}
+
+.frase-hero {
+  margin: 22px auto 0;
+  max-width: 620px;
+  font-size: 1.05rem;
+  color: #5d3648;
+  font-weight: 700;
+}
+
+.btn-musica,
+.btn-secreto {
+  position: absolute;
+  z-index: 2;
+  top: 16px;
+  border: 0;
+  width: 44px;
+  height: 44px;
+  border-radius: 999px;
+  background: rgba(255,255,255,.82);
+  color: #a5426c;
+  box-shadow: 0 8px 22px rgba(178, 82, 122, .14);
+  cursor: pointer;
+  font-size: 1.2rem;
+  font-weight: 900;
+}
+
+.btn-musica {
+  left: 16px;
+}
+
+.btn-secreto {
+  right: 16px;
+}
+
+.contador {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 8px;
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+.contador div {
+  border-radius: 18px;
+  padding: 13px 8px;
+  background: rgba(255,255,255,.72);
+  border: 1px solid rgba(255,255,255,.8);
+}
+
+.contador strong {
+  display: block;
+  font-size: clamp(1.3rem, 5vw, 2.2rem);
+}
+
+.contador span {
+  color: #9a7081;
+  font-size: .76rem;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.menu {
+  position: sticky;
+  top: 10px;
+  z-index: 10;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 8px;
+  padding: 10px;
+  margin: 14px 0;
+  border-radius: 24px;
+  background: rgba(255,255,255,.68);
+  backdrop-filter: blur(18px);
+  box-shadow: 0 10px 35px rgba(178, 82, 122, .10);
+}
+
+.nav-btn {
+  border: 0;
+  padding: 12px 8px;
+  border-radius: 18px;
+  background: transparent;
+  color: #8c6071;
+  font-weight: 900;
+  cursor: pointer;
+}
+
+.nav-btn.activo {
+  background: linear-gradient(135deg, #f36fa4, #ffb6d2);
+  color: white;
+  box-shadow: 0 9px 18px rgba(243, 111, 164, .22);
+}
+
+.page {
+  display: none;
+  animation: aparecer .45s ease both;
+}
+
+.page.activo {
+  display: block;
+}
+
+@keyframes aparecer {
+  from { transform: translateY(12px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+.bloque {
+  border-radius: 28px;
+  padding: 24px;
+  margin-bottom: 16px;
+}
+
+.vidrio h2,
+.final-box h2 {
+  font-size: clamp(1.8rem, 6vw, 3rem);
+  line-height: 1;
+  letter-spacing: -0.05em;
+  margin-bottom: 14px;
+}
+
+.doble {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+  padding: 0;
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+  backdrop-filter: none;
+}
+
+.tarjeta-romantica {
+  border-radius: 26px;
+  padding: 22px;
+  background: #fff;
+  box-shadow: var(--sombra);
+  border: 1px solid rgba(255, 182, 210, .32);
+}
+
+.musica-box code {
+  background: rgba(255, 182, 210, .24);
+  padding: 2px 6px;
+  border-radius: 8px;
+}
+
+.player-especial {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+  color: #9a7081;
+}
+
+.linea-tiempo {
+  position: relative;
+  display: grid;
+  gap: 14px;
+}
+
+.mes-card {
+  position: relative;
+  padding: 22px;
+  border-radius: 26px;
+  background: #fff;
+  box-shadow: 0 12px 38px rgba(178, 82, 122, .13);
+  border: 1px solid rgba(255, 182, 210, .32);
+  overflow: hidden;
+}
+
+.mes-card::before {
+  content: attr(data-mes);
+  position: absolute;
+  right: 16px;
+  top: 8px;
+  font-size: 4rem;
+  line-height: 1;
+  font-weight: 1000;
+  color: rgba(243, 111, 164, .10);
+}
+
+.mes-card h3 {
+  margin-bottom: 10px;
+  color: #a5426c;
+}
+
+.galeria {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 13px;
+}
+
+.foto-card {
+  min-height: 240px;
+  border: 0;
+  border-radius: 26px;
+  overflow: hidden;
+  background: #fff;
+  box-shadow: 0 12px 35px rgba(178, 82, 122, .15);
+  text-align: left;
+  cursor: pointer;
+  padding: 0;
+  position: relative;
+}
+
+.foto-card img {
+  width: 100%;
+  height: 190px;
+  display: block;
+  object-fit: cover;
+  background: linear-gradient(135deg, #fff, #ffe2ef);
+}
+
+.foto-card.sin-foto::before {
+  content: "Sube tu foto aquí";
+  height: 190px;
+  display: grid;
+  place-items: center;
+  color: #a5426c;
+  font-weight: 900;
+  background:
+    radial-gradient(circle at 25% 25%, rgba(255,255,255,.9), transparent 28%),
+    linear-gradient(135deg, #fff, #ffe2ef);
+}
+
+.foto-card p {
+  margin: 0;
+  padding: 13px;
+  color: #74495c;
+  font-weight: 800;
+  line-height: 1.35;
+}
+
+.sobres {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+}
+
+.sobre {
+  position: relative;
+  min-height: 210px;
+  padding: 24px;
+  border-radius: 26px;
+  background: linear-gradient(145deg, #fff, #ffe8f2);
+  border: 1px solid rgba(255, 182, 210, .48);
+  box-shadow: var(--sombra);
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.sobre::after {
+  content: "";
+  position: absolute;
+  inset: auto -20% -45% -20%;
+  height: 90%;
+  background: rgba(243, 111, 164, .13);
+  transform: rotate(-6deg);
+}
+
+.tapa {
+  position: relative;
+  z-index: 1;
+  width: max-content;
+  padding: 7px 12px;
+  border-radius: 999px;
+  background: #fff;
+  color: #a5426c;
+  font-weight: 900;
+  margin-bottom: 18px;
+}
+
+.sobre h3,
+.sobre p {
+  position: relative;
+  z-index: 1;
+}
+
+.carta-abierta {
+  border-radius: 28px;
+  padding: 26px;
+  margin-top: 16px;
+  background: #fff;
+  box-shadow: var(--sombra);
+  border: 1px solid rgba(255, 182, 210, .34);
+  line-height: 1.8;
+}
+
+.carta-abierta h3 {
+  color: #a5426c;
+  font-size: 1.7rem;
+}
+
+.juego {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 13px;
+  margin-bottom: 16px;
+}
+
+.cajita {
+  min-height: 130px;
+  border: 0;
+  border-radius: 24px;
+  padding: 18px;
+  background: linear-gradient(145deg, #fff, #ffe5f0);
+  color: #a5426c;
+  box-shadow: var(--sombra);
+  font-weight: 1000;
+  cursor: pointer;
+}
+
+.cajita.revelada {
+  background: #fff;
+  color: #5d3648;
+  font-weight: 800;
+  line-height: 1.5;
+}
+
+.final-box {
+  text-align: center;
+  background:
+    radial-gradient(circle at top, rgba(255, 182, 210, .42), transparent 45%),
+    rgba(255,255,255,.8);
+}
+
+.modal {
+  position: fixed;
+  inset: 0;
+  z-index: 99;
+  display: grid;
+  place-items: center;
+  padding: 20px;
+  background: rgba(59, 37, 48, .38);
+  backdrop-filter: blur(10px);
+}
+
+.modal-card {
+  position: relative;
+  width: min(560px, 100%);
+  max-height: 82vh;
+  overflow: auto;
+  border-radius: 30px;
+  padding: 30px 22px;
+  text-align: center;
+}
+
+.modal-card img {
+  width: 100%;
+  max-height: 58vh;
+  object-fit: contain;
+  border-radius: 22px;
+}
+
+.cerrar {
+  position: sticky;
+  top: 0;
+  float: right;
+  border: 0;
+  width: 38px;
+  height: 38px;
+  border-radius: 999px;
+  background: #fff;
+  color: #a5426c;
+  font-size: 1.6rem;
+  cursor: pointer;
+  box-shadow: 0 8px 20px rgba(178, 82, 122, .15);
+}
+
+.corazones {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 200;
+}
+
+.corazon {
+  position: absolute;
+  bottom: -30px;
+  animation: subir 3.4s linear forwards;
+  color: #f36fa4;
+  font-size: 22px;
+}
+
+@keyframes subir {
+  to {
+    transform: translateY(-110vh) rotate(40deg);
+    opacity: 0;
+  }
+}
+
+@media (max-width: 860px) {
+  .app {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+
+  .hero {
+    min-height: 480px;
+  }
+
+  .contador {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 6px;
+  }
+
+  .contador div {
+    padding: 10px 4px;
+    border-radius: 15px;
+  }
+
+  .menu {
+    position: fixed;
+    left: 10px;
+    right: 10px;
+    bottom: 10px;
+    top: auto;
+    margin: 0;
+    border-radius: 22px;
+  }
+
+  .nav-btn {
+    font-size: .74rem;
+    padding: 11px 4px;
+  }
+
+  .doble,
+  .sobres,
+  .juego {
+    grid-template-columns: 1fr;
+  }
+
+  .galeria {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .foto-card {
+    min-height: 215px;
+  }
+
+  .foto-card img,
+  .foto-card.sin-foto::before {
+    height: 160px;
+  }
+}
+
+@media (max-width: 420px) {
+  .inicio-card {
+    padding: 28px 20px;
+  }
+
+  .bloque {
+    padding: 20px;
+    border-radius: 24px;
+  }
+
+  .galeria {
+    gap: 10px;
+  }
+
+  .foto-card p {
+    font-size: .86rem;
+  }
+}
