@@ -1,43 +1,195 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mi Primera Página Web</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Yampier & Brenda | 9 meses</title>
+  <meta name="description" content="Una página hecha con amor para Brenda, por nuestros 9 meses." />
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+  <audio id="musicaFondo" src="assets/musica/in-the-pool.mp3" loop preload="auto"></audio>
+  <audio id="musicaEspecial" src="assets/musica/nuestra-cancion.mp3" preload="none"></audio>
 
-  <header>
-    <h1>Hola, soy Julie</h1>
-    <p>Bienvenido a mi primera página web publicada con GitHub.</p>
-    <button onclick="mostrarMensaje()">Haz clic aquí</button>
-  </header>
+  <div class="decoracion" aria-hidden="true">
+    <span></span><span></span><span></span><span></span><span></span>
+  </div>
 
-  <section>
-    <h2>Sobre mí</h2>
-    <p>
-      Estoy aprendiendo a crear páginas web usando HTML, CSS, JavaScript y GitHub.
-    </p>
-  </section>
-
-  <section>
-    <h2>Mis proyectos</h2>
-
-    <div class="tarjeta">
-      <h3>Proyecto 1</h3>
-      <p>Mi primera página web hecha desde cero.</p>
+  <div id="pantallaInicio" class="pantalla-inicio">
+    <div class="inicio-card">
+      <p class="mini-etiqueta">Hecho solo para ti</p>
+      <h1>Brenda, toca aquí para entrar a nuestra historia</h1>
+      <p class="inicio-texto">
+        Nueve meses de risas, caminatas, cartas, rosas, comida rica, momentos difíciles
+        y una forma muy nuestra de estar pegaditos como chicles.
+      </p>
+      <button id="btnEntrar" class="btn-principal">Entrar a nuestra historia</button>
+      <p class="nota-musica">Al tocar la página, la música empezará suavemente.</p>
     </div>
+  </div>
 
-    <div class="tarjeta">
-      <h3>Proyecto 2</h3>
-      <p>Aquí agregaré más trabajos después.</p>
+  <main id="app" class="app oculto">
+    <header class="hero">
+      <button id="btnMusica" class="btn-musica" aria-label="Pausar o reproducir música">♫</button>
+      <button id="btnSecreto" class="btn-secreto" aria-label="Botón secreto">♡</button>
+
+      <div class="hero-contenido">
+        <p class="mini-etiqueta">29 · 06 · 2026</p>
+        <h1>Yampier & Brenda</h1>
+        <p class="subtitulo">9 meses siendo Bubbalo y Trident: siempre pegados.</p>
+
+        <div class="contador" id="contador">
+          <div><strong id="meses">0</strong><span>meses</span></div>
+          <div><strong id="dias">0</strong><span>días</span></div>
+          <div><strong id="horas">0</strong><span>horas</span></div>
+          <div><strong id="minutos">0</strong><span>min</span></div>
+          <div><strong id="segundos">0</strong><span>seg</span></div>
+        </div>
+
+        <p class="frase-hero">
+          “Te amo tres mil millones, y aun así siento que me quedo corto.”
+        </p>
+      </div>
+    </header>
+
+    <nav class="menu">
+      <button class="nav-btn activo" data-page="inicio">Inicio</button>
+      <button class="nav-btn" data-page="historia">Historia</button>
+      <button class="nav-btn" data-page="fotos">Fotos</button>
+      <button class="nav-btn" data-page="cartas">Cartas</button>
+      <button class="nav-btn" data-page="sorpresa">Sorpresa</button>
+    </nav>
+
+    <section class="page activo" id="inicio">
+      <div class="bloque vidrio">
+        <p class="mini-etiqueta">Para mi Bubbalo</p>
+        <h2>Una cartita digital</h2>
+        <p>
+          Brenda, esta página no está hecha para ser perfecta. Está hecha para guardar un pedacito
+          de lo que somos: lo bonito, lo gracioso, lo torpe, lo tierno y todo eso que empezó sin que
+          ninguno de los dos se diera cuenta.
+        </p>
+        <p>
+          Me gusta pensar que lo nuestro fue lento, como algo que se fue armando solito: primero una fila,
+          luego Facebook, luego el Vivero, después caminatas, pizza hawaiana, anillos, cartas, rosas,
+          videítos, chismes, emotes y mil momentos que ahora son parte de mí.
+        </p>
+      </div>
+
+      <div class="bloque doble">
+        <article class="tarjeta-romantica">
+          <h3>Lo que más amo de ti</h3>
+          <p>
+            Tus pequitas. Tu forma de acompañarme. Tu manera de grabar todo, de emocionarte por las salidas
+            y de convertir algo simple en un recuerdo bonito.
+          </p>
+        </article>
+
+        <article class="tarjeta-romantica">
+          <h3>Nuestro gesto</h3>
+          <p>
+            Cuando pensamos lo mismo y juntamos nuestras frentes, como si nuestras mentes ya se hubieran
+            puesto de acuerdo antes que nosotros.
+          </p>
+        </article>
+      </div>
+
+      <div class="bloque musica-box">
+        <h2>Nuestra canción de esta página</h2>
+        <p>
+          La música de fondo se activa al tocar la página. Aquí también puedes poner una canción distinta,
+          por ejemplo una que te recuerde a Brenda.
+        </p>
+        <div class="player-especial">
+          <button id="btnEspecial" class="btn-secundario">Reproducir canción especial</button>
+          <span>Archivo: <code>assets/musica/nuestra-cancion.mp3</code></span>
+        </div>
+      </div>
+    </section>
+
+    <section class="page" id="historia">
+      <div class="bloque vidrio">
+        <p class="mini-etiqueta">Cómo empezó todo</p>
+        <h2>De una fila del comedor a una historia de 9 meses</h2>
+        <p>
+          Primero solo se conocían de cara. Después llegó Facebook, las conversaciones de todos los días,
+          el trabajo en el Vivero y, sin hacer mucho ruido, empezaron a volverse cada vez más cercanos.
+        </p>
+      </div>
+
+      <div class="linea-tiempo" id="lineaTiempo"></div>
+    </section>
+
+    <section class="page" id="fotos">
+      <div class="bloque vidrio">
+        <p class="mini-etiqueta">Galería</p>
+        <h2>20 recuerdos para mirar despacito</h2>
+        <p>
+          Coloca tus fotos con los nombres <code>foto01.jpg</code>, <code>foto02.jpg</code>...
+          hasta <code>foto20.jpg</code> dentro de la carpeta <code>assets/fotos</code>.
+        </p>
+      </div>
+
+      <div class="galeria" id="galeria"></div>
+    </section>
+
+    <section class="page" id="cartas">
+      <div class="bloque vidrio">
+        <p class="mini-etiqueta">Cartas que se abren</p>
+        <h2>Para cuando quieras recordar</h2>
+        <p>Toca cada sobre. Cada uno tiene algo que quiero que guardes.</p>
+      </div>
+
+      <div class="sobres">
+        <article class="sobre" data-carta="carta1">
+          <div class="tapa">Abrir</div>
+          <h3>Gracias por quedarte</h3>
+          <p>Entra aquí.</p>
+        </article>
+
+        <article class="sobre" data-carta="carta2">
+          <div class="tapa">Abrir</div>
+          <h3>Lo que amo de ti</h3>
+          <p>Entra aquí.</p>
+        </article>
+
+        <article class="sobre" data-carta="carta3">
+          <div class="tapa">Abrir</div>
+          <h3>Promesa</h3>
+          <p>Entra aquí.</p>
+        </article>
+      </div>
+
+      <div id="cartaAbierta" class="carta-abierta oculto"></div>
+    </section>
+
+    <section class="page" id="sorpresa">
+      <div class="bloque vidrio">
+        <p class="mini-etiqueta">Mini juego</p>
+        <h2>Elige una cajita, Bubbalo</h2>
+        <p>Cada cajita guarda un recuerdo o una razón por la que te quiero.</p>
+      </div>
+
+      <div class="juego" id="juego"></div>
+
+      <div class="bloque final-box">
+        <h2>Una última cosa</h2>
+        <p>
+          Gracias por estos 9 meses, por tu ternura, por tu lealtad y por hacerme sentir que puedo confiar
+          en alguien sin miedo. Quiero seguir construyendo recuerdos contigo, de esos que empiezan como una
+          salida cualquiera y terminan quedándose para siempre.
+        </p>
+        <button id="btnFinal" class="btn-principal">Toca aquí, pero con cuidado</button>
+      </div>
+    </section>
+  </main>
+
+  <div id="modal" class="modal oculto">
+    <div class="modal-card">
+      <button id="cerrarModal" class="cerrar">×</button>
+      <div id="modalContenido"></div>
     </div>
-  </section>
-
-  <footer>
-    <p>© 2026 - Mi página web</p>
-  </footer>
+  </div>
 
   <script src="script.js"></script>
 </body>
